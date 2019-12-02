@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    data = request.form.get('url')
-    tag = request.form.get('tag', 'meta')
+    data = request.args.get('url')
+    tag = request.args.get('tag', 'meta')
     result =  get_html(data, tag)
     return jsonify(result)
 
