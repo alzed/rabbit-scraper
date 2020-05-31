@@ -1,6 +1,6 @@
 <h1 align="center">:rabbit: <br> rabbit-scraper</h1>
 
-An open scraper API for scraping data from url. It gives power of web scarpping to front end developers and it make scrapping meta and data from a url ease. 
+An open scraper API for scraping data from url. It gives power of web scraping to front end developers and it make scraping meta and data from a url ease. 
 
 ## Built using
 - flask 
