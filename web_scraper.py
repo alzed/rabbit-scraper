@@ -10,9 +10,13 @@ def sanitize(item, filter):
         return item.attrs
     
 
-def get_meta_data(url, type):
+def get_html(url):
     response = requests.get(url)
     html = BeautifulSoup(response.text, 'html.parser')
-    resp = html.find_all('meta')
-    return list(filter(lambda a: a is not None, [sanitize(r, type) for r in resp]))
+    return html
+
+def get_metadata(url, type):
+    html = get_html(url)
+    data = html.find_all('meta')
+    return list(filter(lambda a: a is not None, [sanitize(d, type) for d in data]))
 
