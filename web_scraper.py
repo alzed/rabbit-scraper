@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 
 def sanitize(item, filter):
-    if item.get('name'):
+    if item.has_attr('name'):
         if not filter:
             return {
                 "name": item.get('name'),
@@ -15,7 +15,7 @@ def sanitize(item, filter):
                 "content": item.get('content')
             } 
         
-    if item.get('property'):
+    if item.has_attr('property'):
         if not filter:
             return {
                 "property": item.get('property'),
@@ -30,7 +30,6 @@ def sanitize(item, filter):
 
 def get_meta_data(url, type):
     response = requests.get(url)
-    html = BeautifulSoup(response.text, 'html5lib')
-    res = html.find_all('meta')
-    # return [r.get_text() for r in res] 
-    return list(filter(lambda a: a is not None, [sanitize(r, type) for r in res]))
+    html = BeautifulSoup(response.text, 'html.parser')
+    resp = html.find_all('meta')
+    return list(filter(lambda a: a is not None, [sanitize(r, type) for r in resp]))
