@@ -1,14 +1,9 @@
-from flask import Flask, request, jsonify
+from fastapi import FastAPI
 from web_scraper import get_html
 
-app = Flask(__name__)
+rabbit_scraper = FastAPI()
 
-@app.route('/', methods=['GET'])
-def index():
-    data = request.args.get('url')
-    tag = request.args.get('tag', 'meta')
-    result =  get_html(data, tag)
-    return jsonify(result)
-
-if __name__ == '__main__':
-	app.run(debug=True)
+@rabbit_scraper.get("/v1/api")
+def root(url: str, tag: str = 'meta'):
+    data = get_html(url, tag)
+    return data

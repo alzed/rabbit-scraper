@@ -7,6 +7,11 @@ def sanitize(item):
             "name": item.get('name'),
             "content": item.get('content')
         }
+    if item.get('property'):
+        return {
+            "property": item.get('property'),
+            "content": item.get('content')
+        }
 
 def get_html(url, tag):
     response = requests.get(url)

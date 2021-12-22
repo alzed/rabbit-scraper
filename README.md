@@ -3,7 +3,7 @@
 An open scraper API for scraping data from url. It gives power of web scraping to front end developers and it make scraping meta and data from a url ease. 
 
 ## Built using
-- flask 
+- FastAPI 
 - beautifulsoup4
 
 
